@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test intercom</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        window.intercomSettings = {
+            app_id: "zcygnyto",
+            company: {
+                id: '124',
+                name: 'ACME124'
+            }
+        };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/cufpr5t6';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+    <script>
+        function updateCompany() {
+            var comp = {
+                app_id: "zcygnyto",
+                email: "test@example.com",
+                company: {
+                    id: $('#company_id').val(),
+                    name: $('#company_name').val()
+                }
+            };
+            window.Intercom('update', comp);
+        }
+    </script>
+</head>
+<body>
+    <div id="intercomSettings">
+        <form action="javascript:updateCompany();">
+            <input type="text" id="company_name" value=""><br>
+            <input type="text" id="company_id" value=""><br>
+            <input type="number" id="company_tier" value=""><br>
+            <input type="b" id="fs_integrated" value=""><br>
+            <input type="submit" value="send">
+        </form>
+
+    </div>
+    <script>
+        $('#company_id').val(window.intercomSettings.company.id);
+        $('#company_name').val(window.intercomSettings.company.name);
+
+    </script>
+</body>
+</html>
